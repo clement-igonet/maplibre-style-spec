@@ -4356,6 +4356,58 @@
           }
         }
       },
+      "to-level-range": {
+        "doc": "Converts a level value as found in real data into a `[min, max]` range. Accepts a number (`0.5` becomes `[0.5, 0.5]`), a numeric string, a `;`-separated list (`\"0;1\"` becomes `[0, 1]`), or a range such as `\"-1-3\"` (`[-1, 3]`). Values that cannot be parsed produce `null`, which overlaps nothing, so a badly tagged feature never breaks a filter.",
+        "group": "Types",
+        "syntax": {
+          "overloads": [
+            {
+              "parameters": ["value"],
+              "output-type": "array<number, 2>"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "value",
+              "type": "number | string"
+            }
+          ]
+        },
+        "example": ["to-level-range", ["get", "level"]],
+        "sdk-support": {
+          "basic functionality": {
+            "js": "https://github.com/maplibre/maplibre-style-spec/issues/1843"
+          }
+        }
+      },
+      "ranges-overlap": {
+        "doc": "Returns `true` when two `[min, max]` ranges intersect, and `false` if either range is `null`. Combined with `to-level-range` and `global-state`, this expresses level-aware filtering: a feature spanning levels 0 to 1 matches a viewer on the mezzanine at level 0.5.",
+        "group": "Decision",
+        "syntax": {
+          "overloads": [
+            {
+              "parameters": ["range_a", "range_b"],
+              "output-type": "boolean"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "range_a",
+              "type": "array<number, 2>"
+            },
+            {
+              "name": "range_b",
+              "type": "array<number, 2>"
+            }
+          ]
+        },
+        "example": ["ranges-overlap", ["to-level-range", ["get", "level"]], ["to-level-range", ["global-state", "level"]]],
+        "sdk-support": {
+          "basic functionality": {
+            "js": "https://github.com/maplibre/maplibre-style-spec/issues/1843"
+          }
+        }
+      },
       "global-state": {
         "doc": "Retrieves a property value from global state that can be set with platform-specific APIs. Defaults can be provided using the [`state`](https://maplibre.org/maplibre-style-spec/root/#state) root property. Returns `null` if no value nor default value is set for the retrieved property.",
         "group": "Lookup",

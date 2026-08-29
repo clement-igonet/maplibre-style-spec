@@ -29,6 +29,7 @@ import {Within} from './within';
 import {Distance} from './distance';
 import {Semiliteral} from './semiliteral';
 import {GlobalState} from './global_state';
+import {ToLevelRange, RangesOverlap} from './level_range';
 
 import type {ExpressionRegistry} from '../expression';
 
@@ -71,5 +72,7 @@ export const expressions: ExpressionRegistry = {
     var: Var,
     within: Within,
     distance: Distance,
-    'global-state': GlobalState
+    'global-state': GlobalState,
+    'to-level-range': ToLevelRange,
+    'ranges-overlap': RangesOverlap
 };

@@ -1,0 +1,109 @@
+{
+  "expression": [
+    "to-level-range",
+    [
+      "get",
+      "level"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "level": 0
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "level": 0.5
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "level": "0;1"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "level": "-1-3"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "level": "-4--3"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "level": "2"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "level": "garbage"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {}
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "array<number, 2>"
+    },
+    "outputs": [
+      [
+        0,
+        0
+      ],
+      [
+        0.5,
+        0.5
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        -1,
+        3
+      ],
+      [
+        -4,
+        -3
+      ],
+      [
+        2,
+        2
+      ],
+      null,
+      null
+    ]
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "expression": [
+    "ranges-overlap",
+    [
+      "to-level-range",
+      [
+        "get",
+        "level"
+      ]
+    ],
+    [
+      "to-level-range",
+      [
+        "global-state",
+        "level"
+      ]
+    ]
+  ],
+  "inputs": [
+    [
+      {
+        "globalState": {
+          "level": 0.5
+        }
+      },
+      {
+        "properties": {
+          "level": "0;1"
+        }
+      }
+    ],
+    [
+      {
+        "globalState": {
+          "level": 2
+        }
+      },
+      {
+        "properties": {
+          "level": "0;1"
+        }
+      }
+    ],
+    [
+      {
+        "globalState": {
+          "level": -2
+        }
+      },
+      {
+        "properties": {
+          "level": "-4--1"
+        }
+      }
+    ],
+    [
+      {
+        "globalState": {
+          "level": 0
+        }
+      },
+      {
+        "properties": {
+          "level": 0
+        }
+      }
+    ],
+    [
+      {
+        "globalState": {
+          "level": 1
+        }
+      },
+      {
+        "properties": {
+          "level": "garbage"
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "boolean"
+    },
+    "outputs": [
+      true,
+      false,
+      true,
+      true,
+      false
+    ]
+  }
+}
